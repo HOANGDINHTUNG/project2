@@ -1,7 +1,5 @@
 #include"datatype.h"
 // HAM BO TRO TINH CHAC CHE LOGIC CUA CHUONG TRINH
-// Ham doi mau
-void setColor(int color);
 // Ham chuyen doi dinh dang thang dd/mm/yyyy
 char *formatConversionDate(Date d);
 // Ham kiem tra ngay thang nam co hop le hay khong
@@ -18,8 +16,7 @@ void displayPageCustomer(Member members[], int size, int page);
 int pressAnyKey();
 // Ham kiem tra dinh danh email
 int isValidEmail(const char *email);
-// Mau galaxy
-void galaxyEffect();
+
 
 // HAM PHU BO SUNG CHO HAM CHINH
 // Ham kiem tra xem ma sach co trung hay khong
@@ -86,6 +83,8 @@ void returnBookByLibrary();
 void choiceMenuCustomer();
 // Menu chinh sau khi nhap TK
 void choiceMenuMain();
+
+// TAI KHOAN
 // Menu Tai khoan
 void showMenuAccount();
 // Luu danh sach vao file text
@@ -104,4 +103,5 @@ void generateRandomPassWord(char *pass);
 void registerAccount();
 // Ham dang nhap tai khoan
 int loginAccount();
-
+// Tao mk tu email và so dien thoai
+void GeneratePassword();

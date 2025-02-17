@@ -1,12 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "function.h"
+#include "effect.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char *argv[]) {
 	int choice;
 	while(1){
-//		galaxyEffect();
-		system("color E0");
+		system("color 4E");
 		showMenuAccount();
 		printf("\t\t\t\t\t\tEnter The Choice : ");
 		scanf("%d", &choice);
@@ -27,36 +26,21 @@ int main(int argc, char *argv[]) {
 				}			
 				break;
 			}
+			case 3:{
+				system("color 07");
+				system("cls");
+				GeneratePassword();
+			}
+			case 0:{
+				galaxyEffect();
+				return 0;
+			}
 			default:
-						
+				setColor(3);
+				printf("\tYour selection is not on the menu!!!!\n");
+				setColor(7);
 				break;
 		}
 	}
 }	
-//	int choice;
-//	while (1) {
-//		system("color 4E");
-//		showMenuMain();
-//		printf("\tEnter The Choice : ");
-//		scanf("%d", &choice);
-//		switch(choice){
-//		    case 1: {
-//		    	system("cls");
-//		        choiceMenuBook();
-//		        break;
-//		    }
-//		    case 2: {
-//		    	system("cls");
-//			    choiceMenuCustomer();
-//				break;
-//			}
-//			case 0: {
-//				printf("\tExit the program!!!\n");
-//			    return 0;
-//			}
-//		    default:
-//				printf("\tYour selection is not on the menu!!!!\n");
-//				break;
-//		}
-//	}
-//	return 0;
+
