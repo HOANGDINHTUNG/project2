@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <windows.h>
 #include"datatype.h"
 #define MAX 500
 #include "effect.h"
@@ -10,7 +11,7 @@ Member member1[MAX];
 
 const char *FILE_NAME = "C:\\Users\\HOANG DINH TUNG\\Documents\\Projects\\Project6\\listBook.bin";
 const char *FILE_NAME1 = "C:\\Users\\HOANG DINH TUNG\\Documents\\Projects\\Project6\\listCustomer.bin";
-const char *FILE_NAME2 = "C:\\Users\\HOANG DINH TUNG\\Documents\\Projects\\Project6\\listAccounts.bin.txt";
+const char *FILE_NAME2 = "C:\\Users\\HOANG DINH TUNG\\Documents\\Projects\\Project6\\listAccounts.txt";
 
 int numBooks=0;// So luong khach
 int numMember=0;// So luong khach hang
@@ -114,7 +115,9 @@ void displayPageBook(Book books[], int size, int page){
     int end = start + 10;
 	// Trang
     if (start >= size) {
+    	setColor(4);
         printf("\tInvalid page!!!\n");
+        setColor(6);
         return;
     }
 	// IN ra
@@ -203,6 +206,31 @@ int isValidEmail(const char *email){
     return 1; // Email hop le
 }
 
+// Ham doi mau tung dong
+void setColor(int color){
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
+
+// Mau galaxy
+void galaxyEffect(){
+	// Xanh duong, tim, hong, xanh bien, trang
+    int colors[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14}; 
+    int size = sizeof(colors) / sizeof(colors[0]);
+    
+	// Chen mau vong lap
+	int i=0;
+    while(1){
+        setColor(colors[i++ % size]); 
+        printf("\t\t\t\t\t\t=========== Thank You ============\n");
+        printf("\t\t\t\t\t\t========== See You Soon ==========\n");
+        Sleep(200); // Dung 200ms de tao hieu ung
+        system("cls"); // Xoa man hinh de tao hieu ung nhay
+    }
+    
+	// Reset ve mau mac dinh
+    setColor(7); 
+}
 
 // HAM PHU BO SUNG CHO HAM CHINH
 // Ham kiem tra xem ma sach co trung hay khong
@@ -332,7 +360,9 @@ void programOrientationCustomer(){
 			break;
 		}
 		if (page < 1 || page > totalPage) {
+			setColor(4);
 		    printf("\tInvalid Page! Input to 1 form %d.\n", totalPage);
+		    setColor(6);
 		}
 		else {
 			// Hien thi bang phan trang
@@ -378,7 +408,9 @@ void saveBookToBinaryFile(Book *book2){
     // Ghi so luong vao file
     fwrite(book2,sizeof(Book),1,f);
     
+    setColor(2);
     printf("\tSave file success!!!!\n");
+    setColor(6);
     // Dong file
     fclose(f);
 }

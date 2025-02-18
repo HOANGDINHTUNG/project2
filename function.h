@@ -16,7 +16,10 @@ void displayPageCustomer(Member members[], int size, int page);
 int pressAnyKey();
 // Ham kiem tra dinh danh email
 int isValidEmail(const char *email);
-
+// Ham doi mau tung dong
+void setColor(int color);
+// Mau galaxy
+void galaxyEffect();
 
 // HAM PHU BO SUNG CHO HAM CHINH
 // Ham kiem tra xem ma sach co trung hay khong

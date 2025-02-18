@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include "function.h"
-#include "effect.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char *argv[]) {
 	int choice;
-	while(1){
-		system("color 4E");
+	while(1){					
+		system("color 40");
 		showMenuAccount();
 		printf("\t\t\t\t\t\tEnter The Choice : ");
 		scanf("%d", &choice);
@@ -43,4 +42,3 @@ int main(int argc, char *argv[]) {
 		}
 	}
 }	
-
