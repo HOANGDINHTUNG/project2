@@ -1194,15 +1194,31 @@ void toggleMemberStatus(){
     choice[strcspn(choice, "\n")] = '\0';
     
     // So sach ki tu nhap vao voi ki tu cho san
-    if (strcpy(choice,"yes")==0 || strcpy(choice,"Yes")==0) {
+    if (strcmp(choice,"yes")==0 || strcmp(choice,"Yes")==0) {
         // Dao trang thai(khoa-mo/mo-khoa)
         member1[index].status = !member1[index].status;
         
         // Thong bao
+        setColor(2);
         printf("\tClient %s has been %s successfully!!!\n",member1[index].name,member1[index].status ? "unlocked" : "locked");
+        setColor(6);
+        
+        // Cap nhat vao file
+        FILE *f = fopen(FILE_NAME1, "wb");
+		if (f == NULL) {
+		    printf("\tError opening file %s!\n", FILE_NAME1);
+		    return;
+		}
+		    
+		fwrite(member1, sizeof(Member), numMember, f);
+		    
+		// Dong file
+		fclose(f);
     }
     else {
+    	setColor(4);
         printf("\tCanceled\n");// Huy khi khong nhap dung tu khoa cho san
+        setColor(6);
     }
 }
 
@@ -1230,7 +1246,7 @@ void searchNameCustomer(){
     if(numResults>0){
         printf("\tSearch results:\n");
         printf("#***********#**************************#****************#***********#****************#\n");
-        printf("$%-10s$%-25s$%-15s$%-10s$%-15s$\n","ID","NAME","PHONE","STATUS","BORROWED BOOKS");
+        printf("$%-11s$%-26s$%-16s$%-11s$%-16s$\n","ID","NAME","PHONE","STATUS","BORROWED BOOKS");
         printf("#***********#**************************#****************#***********#****************#\n");
         for(int i=0;i<numResults;i++){
             printf("$ %-10s$ %-25s$ %-15s$ %-10s$ %-15d$\n" ,
